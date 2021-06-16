@@ -1,0 +1,118 @@
+{
+  "docBlock": {
+    "prefix": "dcc",
+    "body": [
+      "/**",
+      " * `$0`.",
+      " */"
+    ]
+  },
+  "import": {
+    "prefix": "imp",
+    "body": "import { $1 } from '$2';"
+  },
+  "reactComponent": {
+    "prefix": "rcc",
+    "body": [
+      "",
+      "/**",
+      " * Module dependencies.",
+      " */",
+      "import { color, media, units } from '@untile/react-components';",
+      "import { ifProp, prop } from 'styled-tools';",
+      "import React, { ReactElement } from 'react';",
+      "import styled, { css } from 'styled-components';",
+      "",
+      "/**",
+      " * `Props` type.",
+      " */",
+      "",
+      "type Props = {",
+      "\tclassName?: string",
+      "};",
+      "",
+      "/**",
+      " * `Wrapper` styled component.",
+      " */",
+      "",
+      "const Wrapper = styled.div`",
+      "\t",
+      "`;",
+      "",
+      "/**",
+      " * `$0` component.",
+      " */",
+      "",
+      "const $0 = (props: Props): ReactElement => {",
+      "\tconst { className } = props;",
+      "",
+      "\treturn (",
+      "\t\t<Wrapper className={className} />",
+      "\t);",
+      "};",
+      "",
+      "/**",
+      " * Export `$0` component.",
+      " */",
+      "",
+      "export default $0;",
+      ""
+    ]
+  },
+  "styledComponent": {
+    "prefix": "styled",
+    "body": [
+      "/**",
+      " * `$1` styled component.",
+      " */",
+      "",
+      "const $1 = styled.$2`",
+      "\t$3",
+      "`;",
+      ""
+    ]
+  },
+  "type": {
+    "prefix": "typ",
+    "body": [
+      "/**",
+      " * `$1` type.",
+      " */",
+      "",
+      "type $1 = {",
+      "\t$2",
+      "};",
+      ""
+    ]
+  },
+  "useCallback": {
+    "prefix": "useCallback",
+    "body": [
+      "useCallback(() => {",
+      "\t$0",
+      "}, []);"
+    ]
+  },
+  "useEffect": {
+    "prefix": "useEffect",
+    "body": [
+      "useEffect(() => {",
+      "\t$0",
+      "}, []);"
+    ]
+  },
+  "useMemo": {
+    "prefix": "useMemo",
+    "body": [
+      "useMemo(() => {",
+      "\t$0",
+      "}, []);"
+    ]
+  },
+  "useState": {
+    "prefix": "useState",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<$2>();"
+    ]
+  }
+}
