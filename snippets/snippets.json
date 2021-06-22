@@ -18,8 +18,9 @@
       "/**",
       " * Module dependencies.",
       " */",
+      "",
       "import { color, media, units } from '@untile/react-components';",
-      "import { ifProp, prop } from 'styled-tools';",
+      "import { ifProp, prop, theme } from 'styled-tools';",
       "import React, { ReactElement } from 'react';",
       "import styled, { css } from 'styled-components';",
       "",
@@ -113,6 +114,14 @@
     "prefix": "useState",
     "body": [
       "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<$2>();"
+    ]
+  },
+  "media": {
+    "prefix": "media",
+    "body": [
+      "media.min('$1')`",
+      "\t$2",
+      "`"
     ]
   }
 }

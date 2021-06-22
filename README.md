@@ -20,6 +20,7 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
 /**
  * Module dependencies.
  */
+
 import { color, media, units } from '@untile/react-components';
 import { ifProp, prop } from 'styled-tools';
 import React, { ReactElement } from 'react';
@@ -126,4 +127,12 @@ import {  } from '';
 /**
  * ``.
  */
+```
+
+### `media`
+
+```typescript
+media.min('')`
+
+`
 ```
