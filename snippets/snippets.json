@@ -67,9 +67,9 @@
     "body": [
       "\n/**\n * Module dependencies.\n */\n\n"
     ],
-    "prefix": "module dependencies doc block"
+    "prefix": "module dependencies"
   },
-  "nextJsImage": {
+  "nextJsImageComponent": {
     "body": [
       "\n<ImageWrapper>",
       "\t<Image",
@@ -94,7 +94,7 @@
       "\t\t<${1/(.*)/${1:/capitalize}/}Context.Provider value={{ $2 }}>",
       "\t\t\t{children}",
       "\t\t</${1/(.*)/${1:/capitalize}/}Context.Provider>",
-      "\t);\n}\n;",
+      "\t);\n};\n",
       "/**\n * Export `${1/(.*)/${1:/capitalize}/}Provider` provider.\n */\n",
       "export default ${1/(.*)/${1:/capitalize}/}Provider;\n"
     ],
@@ -167,8 +167,7 @@
   "switchProp": {
     "body": [
       "switchProp('$1', {",
-      "\t$2: css`\n\t\t\n\t`,",
-      "\t$2: css`\n\t\t\n\t`,",
+      "\t$2: css`\n\t\t$3\n\t`",
       "})"
     ],
     "prefix": "switchProp"
@@ -183,10 +182,6 @@
       "type ${1/(.*)/${1:/capitalize}/} = {\n\t$2\n}"
     ],
     "prefix": "type"
-  },
-  "useBreakpoint": {
-    "body": "const is${1/(.*)/${1:/capitalize}/} = useBreakpoint('$2', 'max');",
-    "prefix": "useBreakpoint"
   },
   "useCallback": {
     "body": "const $1 = useCallback(() => {\n\t$2\n}, []);\n",
@@ -209,7 +204,7 @@
     "prefix": "use query"
   },
   "useRef": {
-    "body": "const $1Ref = useRef<HTML$2Element>();",
+    "body": "const $1Ref = useRef<$2>();",
     "prefix": "useRef"
   },
   "useRequest": {
