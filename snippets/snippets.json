@@ -1,127 +1,246 @@
 {
-  "docBlock": {
-    "prefix": "dcc",
+  "context": {
     "body": [
-      "/**",
-      " * `$0`.",
-      " */"
-    ]
+      "\n/**\n * Module dependencies.\n */\n",
+      "import { Context, ReactNode, createContext, useContext } from 'react';\n",
+      "/**\n * `Props` type.\n */\n",
+      "type Props = {\n\t$2\n};\n",
+      "/**\n * Export `${1/(.*)/${1:/capitalize}/}Context` context.\n */\n",
+      "export const ${1/(.*)/${1:/capitalize}/}Context: Context<Props> = createContext({} as Props);\n",
+      "/**\n * Export `use${1/(.*)/${1:/capitalize}/}` hook.\n */\n",
+      "export const use${1/(.*)/${1:/capitalize}/} = () => useContext(${1/(.*)/${1:/capitalize}/}Context);\n"
+    ],
+    "prefix": "context"
   },
-  "import": {
-    "prefix": "imp",
-    "body": "import { $1 } from '$2';"
+  "docBlock": {
+    "body": "\n/**\n * `$0`.\n */\n",
+    "prefix": ["dok", "doc block"]
+  },
+  "exportType": {
+    "body": [
+      "\n/**\n * Export `${1/(.*)/${1:/capitalize}/}` type.\n */\n",
+      "export type ${1/(.*)/${1:/capitalize}/} = {\n\t$2\n}"
+    ],
+    "prefix": "export type"
+  },
+  "fetchRequest": {
+    "body": [
+      "\n/**\n * Module dependencies.\n */\n",
+      "import {\n\tacceptLanguageHeader,\n\thandleRequestError,\n\trequest",
+      "} from 'src/core/utils/requests';\n",
+      "import { getApiEndpoint } from 'src/core/utils/api-url-resolver';\n",
+      "/**\n * `Options` type.\n */\n",
+      "type Options = {\n\tlocale: string\n};\n",
+      "/**\n * Export `fetch${1/(.*)/${1:/capitalize}/}`.\n */\n",
+      "export async function fetch${1/(.*)/${1:/capitalize}/}({ locale }: Options) {",
+      "\tconst endpoint = getApiEndpoint('$2');\n\ttry {",
+      "\t\tconst { data } = await request.get(endpoint, {",
+      "\t\t\theaders: acceptLanguageHeader(locale)\n\t\t});\n",
+      "\t\treturn data?.data;\n\t} catch (error) {",
+      "\t\t\thandleRequestError(error);\n\t}\n}"
+    ],
+    "prefix": "fetch request"
+  },
+  "getServerSideProps": {
+    "body": [
+      "\n/**\n * Export `getServerSideProps`.\n */\n",
+      "export async function getServerSideProps({ locale }) {",
+      "\tconst data = 'fetchSomething';\n",
+      "\tif (!data) {\n\t\treturn {\n\t\t\tnotFound: true\n\t\t};\n\t}\n",
+      "\treturn {\n\t\tprops: {\n\t\t\tdata\n\t\t}\n\t};\n}"
+    ],
+    "prefix": "getServerSideProps"
+  },
+  "ifProp": {
+    "body": "ifProp('$1', $2, $3)",
+    "prefix": "ifProp"
+  },
+  "isMobile": {
+    "body": "const isMobile = useBreakpoint('$2', 'max');",
+    "prefix": "isMobile"
+  },
+  "lodash": {
+    "body": "import $1 from 'lodash/$1';",
+    "prefix": "lodash"
+  },
+  "moduleDependenciesDocBlock": {
+    "body": [
+      "\n/**\n * Module dependencies.\n */\n\n"
+    ],
+    "prefix": "module dependencies doc block"
+  },
+  "nextJsImage": {
+    "body": [
+      "\n<ImageWrapper>",
+      "\t<Image",
+      "\t\talt={''}",
+      "\t\tlayout={'fill'}",
+      "\t\tobjectFit={'cover'}",
+      "\t\tsrc={''}",
+      "\t/>\n</ImageWrapper>"
+    ],
+    "prefix": "image component"
+  },
+  "provider": {
+    "body": [
+      "\n/**\n * Module dependencies.\n */\n",
+      "import { Limits, Section, ${1/(.*)/${1:/capitalize}/}Context } from './context';",
+      "import React, { ReactNode, useState } from 'react';\n",
+      "/**\n * `Props` type.\n */\n",
+      "type Props = {\n\tchildren: ReactNode\n};\n",
+      "/**\n * `${1/(.*)/${1:/capitalize}/}Provider` provider.\n */\n",
+      "const ${1/(.*)/${1:/capitalize}/}Provider = ({ children }: Props) => {",
+      "\treturn (",
+      "\t\t<${1/(.*)/${1:/capitalize}/}Context.Provider value={{ $2 }}>",
+      "\t\t\t{children}",
+      "\t\t</${1/(.*)/${1:/capitalize}/}Context.Provider>",
+      "\t);\n}\n;",
+      "/**\n * Export `${1/(.*)/${1:/capitalize}/}Provider` provider.\n */\n",
+      "export default ${1/(.*)/${1:/capitalize}/}Provider;\n"
+    ],
+    "prefix": "provider"
   },
   "reactComponent": {
-    "prefix": "rcc",
     "body": [
-      "",
-      "/**",
-      " * Module dependencies.",
-      " */",
-      "",
+      "\n/**\n * Module dependencies.\n */\n",
       "import { color, media, units } from '@untile/react-components';",
-      "import { ifProp, prop, theme } from 'styled-tools';",
+      "import { theme } from 'styled-tools';",
       "import React, { ReactElement } from 'react';",
-      "import styled, { css } from 'styled-components';",
-      "",
-      "/**",
-      " * `Props` type.",
-      " */",
-      "",
-      "type Props = {",
-      "\tclassName?: string",
-      "};",
-      "",
-      "/**",
-      " * `Wrapper` styled component.",
-      " */",
-      "",
-      "const Wrapper = styled.div`",
-      "\t",
-      "`;",
-      "",
-      "/**",
-      " * `$0` component.",
-      " */",
-      "",
-      "const $0 = (props: Props): ReactElement => {",
-      "\tconst { className } = props;",
-      "",
+      "import styled from 'styled-components';\n",
+      "/**\n * `Props` type.\n */\n",
+      "type Props = {\n\tclassName?: string\n};\n",
+      "/**\n * `Wrapper` styled component.\n */\n",
+      "const Wrapper = styled.div`\n\tposition: relative;\n`;\n",
+      "/**\n * `${1/(.*)/${1:/capitalize}/}` component.\n */\n",
+      "const ${1/(.*)/${1:/capitalize}/} = (props: Props): ReactElement => {",
+      "\tconst { className } = props;\n",
       "\treturn (",
-      "\t\t<Wrapper className={className} />",
-      "\t);",
-      "};",
-      "",
-      "/**",
-      " * Export `$0` component.",
-      " */",
-      "",
-      "export default $0;",
-      ""
-    ]
+      "\t\t<Wrapper className={className}>",
+      "\t\t\t$2",
+      "\t\t</Wrapper>",
+      "\t);\n};\n",
+      "/**\n * Export `${1/(.*)/${1:/capitalize}/}` component.\n */\n",
+      "export default ${1/(.*)/${1:/capitalize}/};\n"
+    ],
+    "prefix": ["rcc", "react component"]
+  },
+  "reactPage": {
+    "body": [
+      "\n/**\n * Module dependencies.\n */\n",
+      "import { color, media, units } from '@untile/react-components';",
+      "import { theme } from 'styled-tools';",
+      "import React, { ReactElement } from 'react';",
+      "import styled from 'styled-components';\n",
+      "/**\n * `Wrapper` styled page.\n */\n",
+      "const Wrapper = styled.section`\n\tposition: relative;\n`;\n",
+      "/**\n * `${1/(.*)/${1:/capitalize}/}` page.\n */\n",
+      "const ${1/(.*)/${1:/capitalize}/} = (): ReactElement => {",
+      "\treturn (\n\t\t<>",
+      "\t\t\t<Metatags\n\t\t\t\tpageTitle={title}\n\t\t\t\ttitle={title}\n\t\t\t/>\n",
+      "\t\t\t<Wrapper>\n\t\t\t\t$2\n\t\t\t</Wrapper>",
+      "\t\t</>\n\t);\n};\n",
+      "/**\n * Export `${1/(.*)/${1:/capitalize}/}` page.\n */\n",
+      "export default ${1/(.*)/${1:/capitalize}/};\n"
+    ],
+    "prefix": ["rcp", "react page"]
+  },
+  "routeResolver": {
+    "body": "const routeResolver = useLocalizedRoute();",
+    "prefix": "routeResolver"
   },
   "styledComponent": {
-    "prefix": "styled",
     "body": [
-      "/**",
-      " * `$1` styled component.",
-      " */",
-      "",
-      "const $1 = styled.$2`",
-      "\t$3",
-      "`;",
-      ""
-    ]
+      "\n/**\n * `${1/(.*)/${1:/capitalize}/}` styled component.\n */\n",
+      "const ${1/(.*)/${1:/capitalize}/} = styled.$2`\n\t$3\n`\n"
+    ],
+    "prefix": "styled"
+  },
+  "styledImage": {
+    "body": [
+      "\n/**\n * `ImageWrapper` styled component.\n */\n",
+      "const ImageWrapper = styled.div`",
+      "\toverflow: hidden;\n\tpadding-bottom: 100%;\n\tposition: relative;",
+      "`;"
+    ],
+    "prefix": "styled image"
+  },
+  "switchProp": {
+    "body": [
+      "switchProp('$1', {",
+      "\t$2: css`\n\t\t\n\t`,",
+      "\t$2: css`\n\t\t\n\t`,",
+      "})"
+    ],
+    "prefix": "switchProp"
+  },
+  "translate": {
+    "body": "const { translate } = useTranslate();",
+    "prefix": "translate"
   },
   "type": {
-    "prefix": "typ",
     "body": [
-      "/**",
-      " * `$1` type.",
-      " */",
-      "",
-      "type $1 = {",
-      "\t$2",
-      "};",
-      ""
-    ]
+      "\n/**\n * `${1/(.*)/${1:/capitalize}/}` type.\n */\n",
+      "type ${1/(.*)/${1:/capitalize}/} = {\n\t$2\n}"
+    ],
+    "prefix": "type"
+  },
+  "useBreakpoint": {
+    "body": "const is${1/(.*)/${1:/capitalize}/} = useBreakpoint('$2', 'max');",
+    "prefix": "useBreakpoint"
   },
   "useCallback": {
-    "prefix": "useCallback",
-    "body": [
-      "useCallback(() => {",
-      "\t$0",
-      "}, []);"
-    ]
+    "body": "const $1 = useCallback(() => {\n\t$2\n}, []);\n",
+    "prefix": "useCallback"
   },
   "useEffect": {
-    "prefix": "useEffect",
-    "body": [
-      "useEffect(() => {",
-      "\t$0",
-      "}, []);"
-    ]
+    "body": "useEffect(() => {\n\t$0\n}, []);\n",
+    "prefix": "useEffect"
   },
   "useMemo": {
-    "prefix": "useMemo",
+    "body": "useMemo(() => {\n\t$0\n}, []);\n",
+    "prefix": "useMemo"
+  },
+  "useQuery": {
     "body": [
-      "useMemo(() => {",
-      "\t$0",
-      "}, []);"
-    ]
+      "const {",
+      "\tdata,\n\tisLoading,\n\tisSuccess",
+      "} = use${1/(.*)/${1:/capitalize}/}<$2>({ initialData: props.$3 })"
+    ],
+    "prefix": "use query"
+  },
+  "useRef": {
+    "body": "const $1Ref = useRef<HTML$2Element>();",
+    "prefix": "useRef"
+  },
+  "useRequest": {
+    "body": [
+      "\n/**\n * Module dependencies.\n */\n",
+      "import { QueryObserverBaseResult, useQuery } from 'react-query';",
+      "import { fetch${1/(.*)/${1:/capitalize}/} } from './fetch-$2';",
+      "import { useMemo } from 'react';",
+      "import { useRouter } from 'next/router';\n",
+      "/**\n * `Props` type.\n */\n",
+      "type Props<P> = QueryObserverBaseResult<P, unknown>;\n",
+      "/**\n * `Options` type.\n */\n",
+      "type Options<P> = {\n\tinitialData?: P | null\n};\n",
+      "/**\n * Action type.\n */\n",
+      "export const actionType = ({ locale }): string => {",
+      "\treturn `${locale}-$2`\n;};\n",
+      "/**\n * `use${1/(.*)/${1:/capitalize}/}` hook.\n */\n",
+      "function use${1/(.*)/${1:/capitalize}/}<P>(options?: Options<P>): Props<P> {",
+      "\tconst { locale } = useRouter();",
+      "\tconst variables = useMemo(() => ({ locale }), [locale]);",
+      "\tconst result = useQuery([actionType(variables), variables], () => {",
+      "\t\treturn fetch${1/(.*)/${1:/capitalize}/}(variables);",
+      "\t}, { initialData: options?.initialData });\n",
+      "\treturn result;\n}\n",
+      "/**\n * Export `use${1/(.*)/${1:/capitalize}/}` hook.\n */\n",
+      "export default use${1/(.*)/${1:/capitalize}/};\n"
+    ],
+    "prefix": "use request"
   },
   "useState": {
-    "prefix": "useState",
-    "body": [
-      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<$2>();"
-    ]
-  },
-  "media": {
-    "prefix": "media",
-    "body": [
-      "media.min('$1')`",
-      "\t$2",
-      "`"
-    ]
+    "body": "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<$2>();",
+    "prefix": "useState"
   }
 }
