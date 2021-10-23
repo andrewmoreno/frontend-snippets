@@ -14,125 +14,566 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
 - TypeScript React (.tsx)
 
 ## Snippets
-### `rcc`
 
-```typescript
-/**
- * Module dependencies.
- */
+### React
 
-import { color, media, units } from '@untile/react-components';
-import { ifProp, prop } from 'styled-tools';
-import React, { ReactElement } from 'react';
-import styled, { css } from 'styled-components';
+<details>
+  <summary>
+    context
+  </summary>
 
-/**
- * `Props` type.
- */
+  ```tsx
+  /**
+   * Module dependencies.
+   */
 
-type Props = {
-  className?: string
-};
+  import { Context, ReactNode, createContext, useContext } from 'react';
 
-/**
- * `Wrapper` styled component.
- */
+  /**
+   * `Props` type.
+   */
 
-const Wrapper = styled.div`
+  type Props = {
+    $2
+  };
 
-`;
+  /**
+   * Export `$1Context` context.
+   */
 
-/**
- * `ComponentName` component.
- */
+  export const $1Context: Context<Props> = createContext({} as Props);
 
-const ComponentName = (props: Props): ReactElement => {
-  const { className } = props;
+  /**
+   * Export `use$1` hook.
+   */
 
-  return (
-    <Wrapper className={className} />
-  );
-};
+  export const use$1 = () => useContext($1Context);
+  ```
+</details>
 
-/**
- * Export `ComponentName` component.
- */
+<details>
+  <summary>
+    provider
+  </summary>
 
-export default ComponentName;
-```
+  ```tsx
+  /**
+   * Module dependencies.
+   */
 
-### `useState`
+  import { Limits, Section, NameContext } from './context';
+  import React, { ReactNode, useState } from 'react';
 
-```typescript
-  const [state, setstate] = useState<>();
-```
+  /**
+   * `Props` type.
+   */
 
-### `useEffect`
+  type Props = {
+    children: ReactNode
+  };
 
-```typescript
-useEffect(() => {
+  /**
+   * `$1Provider` provider.
+   */
 
-}, []);
-```
+  const $1Provider = ({ children }: Props) => {
+    return (
+      <$1Context.Provider value={{ $2 }}>
+        {children}
+      </$1Context.Provider>
+    );
+  };
 
-### `useCallback`
+  /**
+   * Export `$1Provider` provider.
+   */
 
-```typescript
-useCallback(() => {
+  export default $1Provider;
+  ```
+</details>
 
-}, []);
-```
+<details>
+  <summary>
+    rcc | react component
+  </summary>
 
-### `useMemo`
+  ```tsx
+  /**
+   * Module dependencies.
+   */
 
-```typescript
-useMemo(() => {
+  import { color, media, units } from '@untile/react-components';
+  import { ifProp, prop } from 'styled-tools';
+  import React, { ReactElement } from 'react';
+  import styled, { css } from 'styled-components';
 
-}, []);
-```
+  /**
+   * `Props` type.
+   */
 
-### `styled`
+  type Props = {
+    className?: string
+  };
 
-```typescript
-/**
- * `` styled component.
- */
+  /**
+   * `Wrapper` styled component.
+   */
 
-const  = styled.`
+  const Wrapper = styled.div`
+    position: relative
+  `;
 
-`;
-```
+  /**
+   * `$1` component.
+   */
 
-### `typ`
+  const $1 = (props: Props): ReactElement => {
+    const { className } = props;
 
-```typescript
-/**
- * `TypeName` type.
- */
+    return (
+      <Wrapper className={className}>
+        $2
+      </Wrapper>
+    );
+  };
 
-type TypeName = {
+  /**
+   * Export `$1` component.
+   */
 
-};
-```
+  export default $1;
+  ```
+</details>
 
-### `imp`
+<details>
+  <summary>
+    rcp | react page
+  </summary>
 
-```typescript
-import {  } from '';
-```
+  ```tsx
+  /**
+   * Module dependencies.
+   */
 
-### `dcc`
+  import { color, media, units } from '@untile/react-components';
+  import { theme } from 'styled-tools';
+  import React, { ReactElement } from 'react';
+  import styled from 'styled-components';
 
-```typescript
-/**
- * ``.
- */
-```
+  /**
+   * `Wrapper` styled page.
+   */
 
-### `media`
+  const Wrapper = styled.section`
+    position: relative;
+  `;
 
-```typescript
-media.min('')`
+  /**
+   * `$1` page.
+   */
 
-`
-```
+  const $1 = (): ReactElement => {
+    return (
+      <>
+        <Metatags
+          pageTitle={title}
+          title={title}
+        />
+
+        <Wrapper>
+          $2
+        </Wrapper>
+      </>
+    );
+  };
+
+  /**
+   * Export `$1` page.
+   */
+
+  export default $1;
+  ```
+</details>
+
+<details>
+  <summary>
+    useCallback
+  </summary>
+
+  ```tsx
+  const $1 = useCallback(() => {
+    $2
+  }, []);
+  ```
+</details>
+
+<details>
+  <summary>
+    useEffect
+  </summary>
+
+  ```tsx
+  useEffect(() => {
+    $0
+  }, []);
+  ```
+</details>
+
+<details>
+  <summary>
+    useMemo
+  </summary>
+
+  ```tsx
+  useMemo(() => {
+    $0
+  }, []);
+  ```
+</details>
+
+<details>
+  <summary>
+    useRef
+  </summary>
+
+  ```tsx
+  const $1Ref = useRef<$2>();
+  ```
+</details>
+
+<details>
+  <summary>
+    useState
+  </summary>
+
+  ```tsx
+  const [$1, set$1] = useState<$2>();
+  ```
+</details>
+
+### React Query
+
+<details>
+  <summary>
+    fetch request
+  </summary>
+
+  ```ts
+  /**
+   * Module dependencies.
+   */
+
+  import {
+    acceptLanguageHeader,
+    handleRequestError,
+    request
+  } from 'src/core/utils/requests';
+
+  import { getApiEndpoint } from 'src/core/utils/api-url-resolver';
+
+  /**
+   * `Options` type.
+   */
+
+  type Options = {
+    locale: string
+  };
+
+  /**
+   * Export `fetch$1`.
+   */
+
+  export async function fetch$1({ locale }: Options) {
+    const endpoint = getApiEndpoint('');
+    try {
+      const { data } = await request.get(endpoint, {
+        headers: acceptLanguageHeader(locale)
+      });
+
+      return data?.data;
+    } catch (error) {
+        handleRequestError(error);
+    }
+  }
+  ```
+</details>
+
+<details>
+  <summary>
+    use query
+  </summary>
+
+  ```tsx
+  const {
+    data,
+    isLoading,
+    isSuccess
+  } = use$1<>({ initialData: props.$2 })
+  ```
+</details>
+
+<details>
+  <summary>
+    use request
+  </summary>
+
+  ```ts
+  /**
+   * Module dependencies.
+   */
+
+  import { QueryObserverBaseResult, useQuery } from 'react-query';
+  import { fetch } from './fetch-$2';
+  import { useMemo } from 'react';
+  import { useRouter } from 'next/router';
+
+  /**
+   * `Props` type.
+   */
+
+  type Props<P> = QueryObserverBaseResult<P, unknown>;
+
+  /**
+   * `Options` type.
+   */
+
+  type Options<P> = {
+    initialData?: P | null
+  };
+
+  /**
+   * Action type.
+   */
+
+  export const actionType = ({ locale }): string => {
+    return `locale-$2`
+  ;};
+
+  /**
+   * `use$1` hook.
+   */
+
+  function use$1<P>(options?: Options<P>): Props<P> {
+    const { locale } = useRouter();
+    const variables = useMemo(() => ({ locale }), [locale]);
+    const result = useQuery([actionType(variables), variables], () => {
+      return fetch$1(variables);
+    }, { initialData: options?.initialData });
+
+    return result;
+  }
+
+  /**
+   * Export `use$1` hook.
+   */
+
+  export default use$1;
+  ```
+</details>
+
+### Styled Components
+
+<details>
+  <summary>
+    styled
+  </summary>
+
+  ```tsx
+  /**
+   * `$1` styled component.
+   */
+
+  const $1 = styled.$2`
+    $3
+  `
+  ```
+</details>
+
+<details>
+  <summary>
+    styled image
+  </summary>
+
+  ```tsx
+  /**
+   * `ImageWrapper` styled component.
+   */
+
+  const ImageWrapper = styled.div`
+    overflow: hidden;
+    padding-bottom: 100%;
+    position: relative;
+  `;
+  ```
+</details>
+
+### Styled Tools
+
+<details>
+  <summary>
+    ifProp
+  </summary>
+
+  ```tsx
+  ifProp('$1', $2, $3)
+  ```
+</details>
+
+<details>
+  <summary>
+    switchProp
+  </summary>
+
+  ```tsx
+  ${switchProp('$1', {
+    $2: css`
+      $3
+    `
+  })}
+  ```
+</details>
+
+### NextJs
+
+<details>
+  <summary>
+    getServerSideProps
+  </summary>
+
+  ```tsx
+  /**
+   * Export `getServerSideProps`.
+   */
+
+  export async function getServerSideProps({ locale }) {
+    const data = 'fetchSomething';
+
+    if (!data) {
+      return {
+        notFound: true
+      };
+    }
+
+    return {
+      props: {
+        data
+      }
+    };
+  }
+  ```
+</details>
+
+### Misc
+
+<details>
+  <summary>
+    dok | docBlock
+  </summary>
+
+  ```ts
+  /**
+   * `$1`.
+   */
+  ```
+</details>
+
+<details>
+  <summary>
+    export type
+  </summary>
+
+  ```ts
+  /**
+   * Export `$1` type.
+   */
+
+  export type $1 = {
+    $2
+  }
+  ```
+</details>
+
+<details>
+  <summary>
+    image component
+  </summary>
+
+  ```tsx
+  <ImageWrapper>
+    <Image
+      alt={''}
+      layout={'fill'}
+      objectFit={'cover'}
+      src={''}
+    />
+  </ImageWrapper>
+  ```
+</details>
+
+<details>
+  <summary>
+    isMobile
+  </summary>
+
+  ```tsx
+  const isMobile = useBreakpoint('$1', 'max');
+  ```
+</details>
+
+<details>
+  <summary>
+    lodash
+  </summary>
+
+  ```ts
+  import $1 from 'lodash/$1';
+  ```
+</details>
+
+<details>
+  <summary>
+    module dependencies
+  </summary>
+
+  ```ts
+  /**
+   * Module dependencies.
+   */
+  ```
+</details>
+
+<details>
+  <summary>
+    routeResolver
+  </summary>
+
+  ```ts
+  const routeResolver = useLocalizedRoute();
+  ```
+</details>
+
+<details>
+  <summary>
+    translate
+  </summary>
+
+  ```ts
+  const { translate } = useTranslate();
+  ```
+</details>
+
+<details>
+  <summary>
+    type
+  </summary>
+
+  ```ts
+  /**
+   * `$1` type.
+   */
+
+  type $1 = {
+    $2
+  }
+  ```
+</details>
