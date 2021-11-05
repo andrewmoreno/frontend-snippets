@@ -27,7 +27,7 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
    * Module dependencies.
    */
 
-  import { Context, ReactNode, createContext, useContext } from 'react';
+  import { Context, createContext, useContext } from 'react';
 
   /**
    * `Props` type.
@@ -61,7 +61,7 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
    * Module dependencies.
    */
 
-  import { Limits, Section, NameContext } from './context';
+  import { $1Context } from './context';
   import React, { ReactNode, useState } from 'react';
 
   /**
@@ -201,8 +201,8 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
   </summary>
 
   ```tsx
-  const $1 = useCallback(() => {
-    $2
+  useCallback(() => {
+    $0
   }, []);
   ```
 </details>
@@ -228,16 +228,6 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
   useMemo(() => {
     $0
   }, []);
-  ```
-</details>
-
-<details>
-  <summary>
-    useRef
-  </summary>
-
-  ```tsx
-  const $1Ref = useRef<$2>();
   ```
 </details>
 
@@ -479,6 +469,36 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
 
 <details>
   <summary>
+    export const
+  </summary>
+
+  ```ts
+  /**
+   * Export `$1`.
+   */
+
+  export const $1 = $2
+  ```
+</details>
+
+<details>
+  <summary>
+    export interface
+  </summary>
+
+  ```ts
+  /**
+   * Export `$1` interface.
+   */
+
+  export interface $1 {
+    $2
+  }
+  ```
+</details>
+
+<details>
+  <summary>
     export type
   </summary>
 
@@ -495,18 +515,17 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
 
 <details>
   <summary>
-    image component
+    interface
   </summary>
 
-  ```tsx
-  <ImageWrapper>
-    <Image
-      alt={''}
-      layout={'fill'}
-      objectFit={'cover'}
-      src={''}
-    />
-  </ImageWrapper>
+  ```ts
+  /**
+   * `$1` interface.
+   */
+
+  interface $1 {
+    $2
+  }
   ```
 </details>
 
@@ -544,21 +563,16 @@ Copy the `frontend-snippets` folder to `~/.vscode/extensions` and reload VS Code
 
 <details>
   <summary>
-    routeResolver
+    nextImageComponent
   </summary>
 
-  ```ts
-  const routeResolver = useLocalizedRoute();
-  ```
-</details>
-
-<details>
-  <summary>
-    translate
-  </summary>
-
-  ```ts
-  const { translate } = useTranslate();
+  ```tsx
+  <Image
+    alt={''}
+    layout={'fill'}
+    objectFit={'cover'}
+    src={''}
+  />
   ```
 </details>
 

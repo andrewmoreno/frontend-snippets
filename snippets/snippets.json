@@ -2,7 +2,7 @@
   "context": {
     "body": [
       "\n/**\n * Module dependencies.\n */\n",
-      "import { Context, ReactNode, createContext, useContext } from 'react';\n",
+      "import { Context, createContext, useContext } from 'react';\n",
       "/**\n * `Props` type.\n */\n",
       "type Props = {\n\t$2\n};\n",
       "/**\n * Export `${1/(.*)/${1:/capitalize}/}Context` context.\n */\n",
@@ -15,6 +15,20 @@
   "docBlock": {
     "body": "\n/**\n * `$0`.\n */\n",
     "prefix": ["dok", "doc block"]
+  },
+  "exportConst": {
+    "body": [
+      "\n/**\n * Export `$1`.\n */\n",
+      "export const $1 = $2"
+    ],
+    "prefix": "export const"
+  },
+  "exportInterface": {
+    "body": [
+      "\n/**\n * Export `${1/(.*)/${1:/capitalize}/}` interface.\n */\n",
+      "export interface ${1/(.*)/${1:/capitalize}/} {\n\t$2\n}"
+    ],
+    "prefix": "export interface"
   },
   "exportType": {
     "body": [
@@ -45,7 +59,7 @@
     "body": [
       "\n/**\n * Export `getServerSideProps`.\n */\n",
       "export async function getServerSideProps({ locale }) {",
-      "\tconst data = 'fetchSomething';\n",
+      "\tconst data = 'await fetchSomething';\n",
       "\tif (!data) {\n\t\treturn {\n\t\t\tnotFound: true\n\t\t};\n\t}\n",
       "\treturn {\n\t\tprops: {\n\t\t\tdata\n\t\t}\n\t};\n}"
     ],
@@ -55,13 +69,16 @@
     "body": "ifProp('$1', $2, $3)",
     "prefix": "ifProp"
   },
-  "isMobile": {
-    "body": "const isMobile = useBreakpoint('$2', 'max');",
-    "prefix": "isMobile"
+  "interface": {
+    "body": [
+      "\n/**\n * `${1/(.*)/${1:/capitalize}/}` interface.\n */\n",
+      "interface ${1/(.*)/${1:/capitalize}/} {\n\t$2\n}"
+    ],
+    "prefix": "interface"
   },
-  "lodash": {
-    "body": "import $1 from 'lodash/$1';",
-    "prefix": "lodash"
+  "isMobile": {
+    "body": "const isMobile = use$2Breakpoint('md$1', 'max');",
+    "prefix": "isMobile"
   },
   "moduleDependenciesDocBlock": {
     "body": [
@@ -69,23 +86,22 @@
     ],
     "prefix": "module dependencies"
   },
-  "nextJsImageComponent": {
+  "nextImageComponent": {
     "body": [
-      "\n<ImageWrapper>",
-      "\t<Image",
-      "\t\talt={''}",
-      "\t\tlayout={'fill'}",
-      "\t\tobjectFit={'cover'}",
-      "\t\tsrc={''}",
-      "\t/>\n</ImageWrapper>"
+      "<Image",
+      "\talt={''}",
+      "\tlayout={'fill'}",
+      "\tobjectFit={'cover'}",
+      "\tsrc={''}",
+      "/>"
     ],
-    "prefix": "image component"
+    "prefix": "nextImageComponent"
   },
   "provider": {
     "body": [
       "\n/**\n * Module dependencies.\n */\n",
-      "import { Limits, Section, ${1/(.*)/${1:/capitalize}/}Context } from './context';",
-      "import React, { ReactNode, useState } from 'react';\n",
+      "import { ${1/(.*)/${1:/capitalize}/}Context } from './context';",
+      "import React, { ReactNode } from 'react';\n",
       "/**\n * `Props` type.\n */\n",
       "type Props = {\n\tchildren: ReactNode\n};\n",
       "/**\n * `${1/(.*)/${1:/capitalize}/}Provider` provider.\n */\n",
@@ -103,26 +119,40 @@
   "reactComponent": {
     "body": [
       "\n/**\n * Module dependencies.\n */\n",
-      "import { color, media, units } from '@untile/react-components';",
-      "import { theme } from 'styled-tools';",
-      "import React, { ReactElement } from 'react';",
-      "import styled from 'styled-components';\n",
+      "import React, { ReactElement } from 'react';\n",
       "/**\n * `Props` type.\n */\n",
       "type Props = {\n\tclassName?: string\n};\n",
-      "/**\n * `Wrapper` styled component.\n */\n",
-      "const Wrapper = styled.div`\n\tposition: relative;\n`;\n",
       "/**\n * `${1/(.*)/${1:/capitalize}/}` component.\n */\n",
-      "const ${1/(.*)/${1:/capitalize}/} = (props: Props): ReactElement => {",
-      "\tconst { className } = props;\n",
+      "const ${1/(.*)/${1:/capitalize}/} = ({ className }: Props): ReactElement => {",
       "\treturn (",
-      "\t\t<Wrapper className={className}>",
-      "\t\t\t$2",
-      "\t\t</Wrapper>",
       "\t);\n};\n",
       "/**\n * Export `${1/(.*)/${1:/capitalize}/}` component.\n */\n",
       "export default ${1/(.*)/${1:/capitalize}/};\n"
     ],
     "prefix": ["rcc", "react component"]
+  },
+  "reactFunctionalComponent": {
+    "body": [
+      "\n/**\n * Module dependencies.\n */\n",
+      "import { color, media, units } from '@untile/react-components';",
+      "import { theme } from 'styled-tools';",
+      "import React, { FC, ReactElement, forwardRef } from 'react';",
+      "import styled from 'styled-components';\n",
+      "/**\n * Export `${1/(.*)/${1:/capitalize}/}Props` interface.\n */\n",
+      "export interface ${1/(.*)/${1:/capitalize}/}Props {\n\tclassName?: string;\n}\n",
+      "/**\n * `Wrapper` styled component.\n */\n",
+      "const Wrapper = styled.div`\n\tposition: relative;\n`;\n",
+      "/**\n * `${1/(.*)/${1:/capitalize}/}` component.\n */\n",
+      "const ${1/(.*)/${1:/capitalize}/}: FC<${1/(.*)/${1:/capitalize}/}Props> = forwardRef<any, ${1/(.*)/${1:/capitalize}/}Props>((props: ${1/(.*)/${1:/capitalize}/}Props, ref: any): ReactElement => {",
+      "\tconst { className } = props;\n\n\treturn (",
+      "\t\t<Wrapper\n\t\t\tclassName={className}\n\t\t\tref={ref}\n\t\t>",
+      "\t\t\t$2\n\t\t</Wrapper>\n\t);\n};\n",
+      "/**\n * `${1/(.*)/${1:/capitalize}/}` display name.",
+      "*/\n\n${1/(.*)/${1:/capitalize}/}.displayName = '${1/(.*)/${1:/capitalize}/}';\n",
+      "/**\n * Export `${1/(.*)/${1:/capitalize}/}` component.\n */\n",
+      "export default ${1/(.*)/${1:/capitalize}/});\n"
+    ],
+    "prefix": ["rfc", "react functional component"]
   },
   "reactPage": {
     "body": [
@@ -144,10 +174,6 @@
     ],
     "prefix": ["rcp", "react page"]
   },
-  "routeResolver": {
-    "body": "const routeResolver = useLocalizedRoute();",
-    "prefix": "routeResolver"
-  },
   "styledComponent": {
     "body": [
       "\n/**\n * `${1/(.*)/${1:/capitalize}/}` styled component.\n */\n",
@@ -166,15 +192,11 @@
   },
   "switchProp": {
     "body": [
-      "switchProp('$1', {",
-      "\t$2: css`\n\t\t$3\n\t`",
+      "switch$1Prop('$2', {",
+      "\t$3: css`\n\t\t$4\n\t`",
       "})"
     ],
     "prefix": "switchProp"
-  },
-  "translate": {
-    "body": "const { translate } = useTranslate();",
-    "prefix": "translate"
   },
   "type": {
     "body": [
@@ -184,15 +206,15 @@
     "prefix": "type"
   },
   "useCallback": {
-    "body": "const $1 = useCallback(() => {\n\t$2\n}, []);\n",
+    "body": "use$1Callback(() => {\n\t$2\n}, []);\n",
     "prefix": "useCallback"
   },
   "useEffect": {
-    "body": "useEffect(() => {\n\t$0\n}, []);\n",
+    "body": "use$1Effect(() => {\n\t$2\n}, []);\n",
     "prefix": "useEffect"
   },
   "useMemo": {
-    "body": "useMemo(() => {\n\t$0\n}, []);\n",
+    "body": "use$1Memo(() => {\n\t$2\n}, []);\n",
     "prefix": "useMemo"
   },
   "useQuery": {
@@ -202,10 +224,6 @@
       "} = use${1/(.*)/${1:/capitalize}/}<$2>({ initialData: props.$3 })"
     ],
     "prefix": "use query"
-  },
-  "useRef": {
-    "body": "const $1Ref = useRef<$2>();",
-    "prefix": "useRef"
   },
   "useRequest": {
     "body": [
@@ -235,7 +253,7 @@
     "prefix": "use request"
   },
   "useState": {
-    "body": "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<$2>();",
+    "body": "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = use$2State<$3>();",
     "prefix": "useState"
   }
 }
